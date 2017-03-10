@@ -1,11 +1,32 @@
-module Main exposing (..) 
+import Html exposing (..)
+import Style exposing (..)
 
-import Html exposing(text)
+centeredLayout : List Style
+centeredLayout =
+  [ display flex'
+  , justifyContent center
+  , alignItems center
+  ]
 
-ask : String -> String 
-ask thing =
-  "Is there a " ++ thing ++ "?"
+columnLayout : Styles
+columnLayout =
+  [ display flex'
+  , flexDirection column
+  ]
 
-main : Html.Html msg
-main = 
-  text <| ask "fish"
+
+-- we can compose specific styles with the reusable "columnLayout", above
+container : Styles 
+container =
+  List.concat
+        [ columnLayout
+        , [ position absolute
+          , width (pc 100)
+          , height (pc 100)
+          , fontFamily "sans-serif"
+          ]
+        ]
+
+view : Html
+view =
+  div [ style centeredLayout ] [ text "Hello, world!" ]
