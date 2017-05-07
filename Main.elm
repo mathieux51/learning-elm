@@ -2,24 +2,20 @@ module Main exposing (..)
 
 import Html exposing (text)
 
-
-type alias Foo = 
-  { corge : Int
-  , qux : String
-  , bar : String 
-  }
-foo : Foo
-foo = 
-  { bar = "baz"
-  , qux = "quux"
-  , corge = 18
+type alias Person = 
+  { name : String
+  , age : Int
   }
 
-renderFoo : Foo -> String
-renderFoo foo = 
-  foo.bar ++ (toString foo.corge)
+people : List Person
+people = 
+  [ { name = "Mat", age = 29}
+  , { name = "Juliane", age = 25}
+  ]
+
+
 
 main : Html.Html msg
 main = 
   text
-    <| renderFoo foo
+    <| toString <| people
