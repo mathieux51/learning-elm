@@ -1,4 +1,14 @@
+module Main exposing (..)
+
 import Html exposing (text)
 
-main =
-  text "Hello, World!"
+foo : { qux : String, bar : String }
+foo = 
+  { bar = "baz"
+  , qux = "quux"
+  }
+
+main : Html.Html msg
+main = 
+  text 
+    foo.bar
